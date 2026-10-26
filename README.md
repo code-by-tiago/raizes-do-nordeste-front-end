@@ -12,7 +12,6 @@ Abra `index.html` em um navegador moderno. Não há dependências ou etapa de co
 - `index.html`, `styles.css` e `app.js`: aplicação navegável.
 - `relatorio.html`: documento técnico pronto para **Imprimir > Salvar como PDF**.
 
-Antes de enviar, publique esta pasta em um repositório público e em GitHub Pages, Netlify ou Vercel. Insira as duas URLs nos campos correspondentes de `relatorio.html`.
 
 ## Fluxos demonstrados
 
