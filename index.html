@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Raízes do Nordeste — cardápio, pedidos e fidelidade">
+  <title>Raízes do Nordeste | Pedido digital</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" data-nav="menu" aria-label="Ir para o cardápio">
+      <span class="brand-mark">RN</span>
+      <span><strong>Raízes</strong><small>do Nordeste</small></span>
+    </a>
+    <div class="top-actions">
+      <button class="icon-button" data-nav="fidelity" aria-label="Abrir fidelidade">★</button>
+      <button class="cart-button" data-nav="cart" aria-label="Abrir sacola">
+        <span>Minha sacola</span><b id="cart-count">0</b>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="screen-menu" class="screen active" aria-labelledby="menu-title">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Sabor que acolhe</p>
+          <h1 id="menu-title">Bom dia, Tiago!</h1>
+          <p>Seu café nordestino, do seu jeito e no seu tempo.</p>
+        </div>
+        <span class="hero-sun" aria-hidden="true">☀</span>
+      </div>
+      <div class="location-card">
+        <div><span class="muted">Você está pedindo em</span><strong id="store-name">Unidade Recife — Boa Viagem</strong></div>
+        <button class="text-button" id="change-store">Trocar</button>
+      </div>
+      <div class="section-heading"><div><p class="eyebrow">Cardápio da unidade</p><h2>Escolha seus favoritos</h2></div><span class="open-badge">● Aberta</span></div>
+      <div class="categories" role="tablist" aria-label="Categorias">
+        <button class="category active" data-category="Todos">Todos</button>
+        <button class="category" data-category="Cuscuz">Cuscuz</button>
+        <button class="category" data-category="Tapioca">Tapiocas</button>
+        <button class="category" data-category="Cafés">Cafés</button>
+        <button class="category" data-category="Bebidas">Bebidas</button>
+      </div>
+      <div id="product-grid" class="product-grid"></div>
+    </section>
+
+    <section id="screen-cart" class="screen" aria-labelledby="cart-title">
+      <button class="back-button" data-nav="menu">← Voltar ao cardápio</button>
+      <p class="eyebrow">Conferência</p><h1 id="cart-title">Minha sacola</h1>
+      <div id="cart-content"></div>
+    </section>
+
+    <section id="screen-checkout" class="screen" aria-labelledby="checkout-title">
+      <button class="back-button" data-nav="cart">← Voltar à sacola</button>
+      <p class="eyebrow">Último passo</p><h1 id="checkout-title">Finalizar pedido</h1>
+      <div class="checkout-grid">
+        <form id="checkout-form" class="card form-card">
+          <label for="pickup">Como você quer receber?</label>
+          <div class="choice-row"><label class="choice selected"><input type="radio" name="pickup" value="Retirada na loja" checked> Retirar na loja</label><label class="choice"><input type="radio" name="pickup" value="Balcão"> Consumir no local</label></div>
+          <label for="customer-name">Nome para o pedido</label><input id="customer-name" required value="Tiago da Silva Souza">
+          <label for="payment">Pagamento</label><select id="payment"><option>Cartão (ambiente externo seguro)</option><option>Pix (ambiente externo seguro)</option><option>Carteira de pontos</option></select>
+          <label class="consent"><input id="consent" type="checkbox" required> Autorizo o uso dos meus dados para processar este pedido, conforme a <button type="button" class="link-button" id="privacy-link">Política de Privacidade</button>.</label>
+          <button class="primary-button" type="submit">Continuar para pagamento externo →</button>
+        </form>
+        <aside class="card order-summary" id="checkout-summary"></aside>
+      </div>
+    </section>
+
+    <section id="screen-payment" class="screen" aria-labelledby="payment-title">
+      <div class="payment-state card">
+        <span class="external-icon">↗</span><p class="eyebrow">Ambiente externo</p><h1 id="payment-title">Pagamento seguro</h1>
+        <p>Você será direcionado para o provedor de pagamentos. Nenhum dado do seu cartão é armazenado pela Raízes.</p>
+        <button class="primary-button" id="confirm-payment">Simular pagamento aprovado</button>
+        <button class="text-button" id="payment-fail">Simular falha no pagamento</button>
+      </div>
+    </section>
+
+    <section id="screen-tracking" class="screen" aria-labelledby="tracking-title">
+      <div class="success-banner"><span>✓</span><div><strong>Pedido confirmado!</strong><p id="order-number">Pedido #RN-0000</p></div></div>
+      <p class="eyebrow">Acompanhe em tempo real</p><h1 id="tracking-title">Já estamos preparando</h1>
+      <div class="progress-track"><div class="progress-fill"></div></div>
+      <div class="status-list"><div class="status done"><b>✓</b><div><strong>Pedido recebido</strong><small>Pagamento confirmado com segurança</small></div></div><div class="status current"><b>2</b><div><strong>Em preparo</strong><small>A cozinha está cuidando do seu pedido</small></div></div><div class="status"><b>3</b><div><strong>Pronto para retirada</strong><small>Avisaremos quando estiver pronto</small></div></div></div>
+      <button class="secondary-button" data-nav="menu">Fazer novo pedido</button>
+    </section>
+
+    <section id="screen-fidelity" class="screen" aria-labelledby="fidelity-title">
+      <button class="back-button" data-nav="menu">← Voltar</button><p class="eyebrow">Programa de fidelidade</p><h1 id="fidelity-title">Clube das Raízes</h1>
+      <div class="points-card"><span>Seus pontos</span><strong>280 <small>pts</small></strong><div class="points-bar"><i></i></div><small>Faltam 120 pontos para o próximo benefício</small></div>
+      <h2>Benefícios para você</h2><div class="benefits"><article class="card benefit"><span>☕</span><div><strong>Café coado grátis</strong><small>Disponível com 400 pontos</small></div><button disabled>Resgatar</button></article><article class="card benefit"><span>🥥</span><div><strong>10% de desconto</strong><small>Disponível com 600 pontos</small></div><button disabled>Resgatar</button></article></div>
+      <div class="privacy-note"><strong>Privacidade em primeiro lugar</strong><p>Você escolhe quais comunicações recebe. Altere suas preferências ou solicite seus dados a qualquer momento.</p><button class="text-button" id="privacy-link-2">Gerenciar preferências</button></div>
+    </section>
+  </main>
+
+  <div id="privacy-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title" hidden>
+    <div class="modal-card"><button class="modal-close" id="close-privacy" aria-label="Fechar">×</button><p class="eyebrow">Transparência e controle</p><h2 id="privacy-title">Sua privacidade importa</h2><p>Usamos seus dados apenas para processar pedidos, oferecer benefícios que você escolher e melhorar o serviço. Você pode revogar consentimentos, consultar ou excluir seus dados.</p><label class="consent"><input type="checkbox" checked> Quero receber promoções e novidades</label><button class="primary-button" id="save-privacy">Salvar preferências</button><a href="#" class="text-button">Ler política completa</a></div>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
