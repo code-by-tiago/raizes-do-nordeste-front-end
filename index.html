@@ -6,6 +6,7 @@
   <meta name="description" content="Raízes do Nordeste — cardápio, pedidos e fidelidade">
   <title>Raízes do Nordeste | Pedido digital</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="accessibility.css">
 </head>
 <body>
   <header class="topbar">
@@ -37,11 +38,11 @@
       </div>
       <div class="section-heading"><div><p class="eyebrow">Cardápio da unidade</p><h2>Escolha seus favoritos</h2></div><span class="open-badge">● Aberta</span></div>
       <div class="categories" role="tablist" aria-label="Categorias">
-        <button class="category active" data-category="Todos">Todos</button>
-        <button class="category" data-category="Cuscuz">Cuscuz</button>
-        <button class="category" data-category="Tapioca">Tapiocas</button>
-        <button class="category" data-category="Cafés">Cafés</button>
-        <button class="category" data-category="Bebidas">Bebidas</button>
+        <button class="category active" role="tab" aria-selected="true" data-category="Todos">Todos</button>
+        <button class="category" role="tab" aria-selected="false" data-category="Cuscuz">Cuscuz</button>
+        <button class="category" role="tab" aria-selected="false" data-category="Tapioca">Tapiocas</button>
+        <button class="category" role="tab" aria-selected="false" data-category="Cafés">Cafés</button>
+        <button class="category" role="tab" aria-selected="false" data-category="Bebidas">Bebidas</button>
       </div>
       <div id="product-grid" class="product-grid"></div>
     </section>
@@ -56,12 +57,13 @@
       <button class="back-button" data-nav="cart">← Voltar à sacola</button>
       <p class="eyebrow">Último passo</p><h1 id="checkout-title">Finalizar pedido</h1>
       <div class="checkout-grid">
-        <form id="checkout-form" class="card form-card">
+        <form id="checkout-form" class="card form-card" novalidate>
           <label for="pickup">Como você quer receber?</label>
           <div class="choice-row"><label class="choice selected"><input type="radio" name="pickup" value="Retirada na loja" checked> Retirar na loja</label><label class="choice"><input type="radio" name="pickup" value="Balcão"> Consumir no local</label></div>
-          <label for="customer-name">Nome para o pedido</label><input id="customer-name" required value="Tiago da Silva Souza">
+          <label for="customer-name">Nome para o pedido</label><input id="customer-name" name="customerName" autocomplete="name" minlength="2" maxlength="80" required value="Tiago da Silva Souza" aria-describedby="checkout-feedback">
           <label for="payment">Pagamento</label><select id="payment"><option>Cartão (ambiente externo seguro)</option><option>Pix (ambiente externo seguro)</option><option>Carteira de pontos</option></select>
           <label class="consent"><input id="consent" type="checkbox" required> Autorizo o uso dos meus dados para processar este pedido, conforme a <button type="button" class="link-button" id="privacy-link">Política de Privacidade</button>.</label>
+          <p id="checkout-feedback" class="form-feedback" role="alert" aria-live="polite"></p>
           <button class="primary-button" type="submit">Continuar para pagamento externo →</button>
         </form>
         <aside class="card order-summary" id="checkout-summary"></aside>
@@ -94,7 +96,7 @@
   </main>
 
   <div id="privacy-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title" hidden>
-    <div class="modal-card"><button class="modal-close" id="close-privacy" aria-label="Fechar">×</button><p class="eyebrow">Transparência e controle</p><h2 id="privacy-title">Sua privacidade importa</h2><p>Usamos seus dados apenas para processar pedidos, oferecer benefícios que você escolher e melhorar o serviço. Você pode revogar consentimentos, consultar ou excluir seus dados.</p><label class="consent"><input type="checkbox" checked> Quero receber promoções e novidades</label><button class="primary-button" id="save-privacy">Salvar preferências</button><a href="#" class="text-button">Ler política completa</a></div>
+    <div class="modal-card"><button class="modal-close" id="close-privacy" aria-label="Fechar">×</button><p class="eyebrow">Transparência e controle</p><h2 id="privacy-title">Sua privacidade importa</h2><p>Usamos seus dados apenas para processar pedidos, oferecer benefícios que você escolher e melhorar o serviço. Você pode revogar consentimentos, consultar ou excluir seus dados.</p><label class="consent"><input id="marketing-consent" type="checkbox"> Quero receber promoções e novidades</label><button class="primary-button" id="save-privacy">Salvar preferências</button><button type="button" class="text-button" id="privacy-policy">Ler política resumida</button></div>
   </div>
   <div id="toast" class="toast" role="status"></div>
   <script src="app.js"></script>

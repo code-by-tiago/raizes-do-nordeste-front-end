@@ -1,0 +1,25 @@
+:focus-visible {
+  outline: 3px solid #e5a83b;
+  outline-offset: 3px;
+}
+
+.form-feedback {
+  min-height: 1.4em;
+  color: #a9411e;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.form-card input:invalid:not(:placeholder-shown) {
+  border-color: #a9411e;
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal-card .text-button {
+  display: block;
+  margin: 12px auto 0;
+}
